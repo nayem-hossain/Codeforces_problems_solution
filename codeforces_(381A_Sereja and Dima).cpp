@@ -91,5 +91,46 @@ using namespace std;
 #define inf  1000000009 //10^9 + 9
 int main()
 {
+    int n,card_no,sajeras_point=0,dimas_point=0;
+    cin>>n;
+    vector<int>cards;
+    for(int i=0; i<n; i++)
+    {
+        cin>>card_no;
+        cards.push_back(card_no);
+    }
 
+    for(int i=0; i<n/2; i++)
+    {
+        if(cards.front()>cards.back())
+        {
+            sajeras_point=sajeras_point+cards.front();
+            cards.erase(cards.begin());
+        }
+        else
+        {
+            sajeras_point=sajeras_point+cards.back();
+            cards.pop_back();
+        }
+        if(cards.front()>cards.back())
+        {
+            dimas_point=dimas_point+cards.front();
+            cards.erase(cards.begin());
+        }
+        else
+        {
+            dimas_point=dimas_point+cards.back();
+            cards.pop_back();
+        }
+    }
+
+
+    if(n%2==1)//OR, if(n%2!=0)
+    {
+        sajeras_point=sajeras_point+cards.front();
+    }
+
+    cout<<sajeras_point<<" "<<dimas_point<<endl;
+
+    return 0;
 }
